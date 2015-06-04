@@ -1,0 +1,102 @@
+\chapter{Background}
+\label{sec: Background}
+
+
+\section{The Navier-Stokes equations}
+\label{sec: The Navier-Stokes equations}
+
+The microclimate over urban areas involves a wide range of flow scales. On the one hand, obstacles such as buildings, civil engineering structures or small  terrain features, affect the atmospheric boundary layer. The topology of such obstacles results into small flow structures with a typical size of $\mathcal{O}=10^{0}m$. On the other hand, large scale effects, such as regional winds and convective cells, generate large scale eddies with a size of $\mathcal{O}=10^{2}m$. Resolving this wide range of scales in a single fine-grained Large Eddy Simulation (LES) model would still be unfeasible due to its computational cost in terms of cell count and time stepping. Even the use of local mesh refinement to tackle the cell count problem would still require a very small time step to keep the Courant number below unity. Therefore, a nesting procedure is proposed to solve the both issues. An LES-within-LES nesting is composed of a Small-domain fine-grained LES (referred as S-LES from now), which is embedded in a Large-domain coarse-grained LES (referred as L-LES). The fields of the L-LES are interpolated on the boundaries of the S-LES to achieve the nesting. A blending zone, also named relaxation zone, is sometime added in the S-LES domain to ensure a smooth transition between the flow fields of the two simulations.
+
+Reynolds Averaged Navier-Stokes (RANS) nesting procedures are already common practice for operational Numerical Weather Prediction (NWP). For example, most of the European meteorological offices use the a global planetary model to get macroscale climate prediction and transfer the relevant data to a nested NWP model for the mesoscale weather prediction.
+
+The reference LES and coarse LES solve the standard filtered Navier-stokes equation for mass and momentum (\cite{Smagorinsky1963}), which can be written in conservative form as:
+\begin{subequations}\label{subequ: fitlered Navier-Stokes}
+	\begin{gather}
+		\frac{\partial \overline{u}_i}{\partial x_i} = 0
+		\label{equ - filtered mass}
+		\\
+		\frac{\partial \overline{u}_i}{\partial t}+ \frac{\partial \overline{u}_i \overline{u}_j}{\partial x_j}=-\frac{\partial \overline{p}}{\partial x_i}+\nu \frac{\partial^2 \overline{u}_i}{\partial x_{j}x_{j}}-\frac{\partial \tau_{ij}}{\partial x_j}
+		\label{equ - filtered momentum}
+	\end{gather}
+\end{subequations}
+with $\overline{p}$ and $\overline{u}_i$ the filtered (resolved) pressure and velocity fields, defined as
+\begin{subequations}\label{subequ: filtering operation}
+	\begin{gather}
+		\overline{p}=p-p'
+		\label{equ: p filterering}
+		\\
+		\overline{u}_i=u_i-u'_i
+		\label{equ: u filterering}
+	\end{gather}
+\end{subequations}
+with $p'$ and $u'_i$ the residual pressure and velocity fields. On each filtered field, an averaging operation can be applied:
+\begin{subequations}\label{subequ: averaging operation}
+	\begin{gather}
+		\left\langle \overline{p} \right\rangle = \overline{p} - p^{\prime\prime}
+		\label{equ: p averaging}
+		\\
+		\left\langle \overline{u}_i \right\rangle = \overline{u}_i - u_i^{\prime\prime}
+		\label{equ: u averaging}
+	\end{gather}
+\end{subequations}
+with $\left\langle \cdot \right\rangle$ the averaging operation on $\overline{p}$ and $\overline{u}_i$ fields,  and $p^{\prime\prime}$, $u_i^{\prime\prime}$ the pressure and velocity fluctuation respectively.
+
+The residual stress tensor $\tau_{ij}^{sgs}$, also know as the sub-grid stress (sgs) tensor is defined as
+\begin{equation}
+\tau_{ij}^{sgs}=\overline{u_i u_j}-\overline{u}_i\overline{u}_j.
+\end{equation}
+In this study the dynamic Smagorinsky-Lilly model proposed by \cite{Lilly1992} is used to modeled the sgs stress tensor. It is approximated by
+\begin{equation}\label{equ: sgs model}
+\tau_{ij}=\frac{1}{3}\delta_{ij}\tau_{kk}+2(C_{D}\Delta)^2\left| \overline{S} \right|\overline{S}_{ij}
+\end{equation}
+where $\delta_{ij}=1$ if $i=j$ and zero otherwise, $C_{D}$ the Smagorinsky coefficient, $\Delta$ the filter size, and $\left|\overline{S}\right|=(2\overline{S}_{ij}\overline{S}_{ij})^2$ the magnitude of the stain-rate tensor $\overline{S}_{ij}=\left(\partial\overline{u}_i/\partial  x_j+\partial\overline{u}_j/\partial x_i \right)/2$. In the original model, $C_{D}$ is set as constant, which is not true near the wall and in the flow regions with  high shear stresses. Therefore Lilly proposed a dynamic version of the $C_D$ coefficient
+\begin{equation}
+C_D=\frac{1}{2}\frac{L_{ij}M_{ij}}{M_{ij}^2}
+\label{equ: dynamic Cd coefficient}
+\end{equation}
+with
+\begin{subequations}\label{subequ: Lij and Mij}
+	\begin{gather}
+		L_{ij}-\frac{1}{3}\delta_{ij}L_{kk}=2C_{D}M_{ij}
+		\label{equ: Lij}
+		\\
+		M_{ij}=\Delta^2\left| \overline{S} \right|\overline{S}_{ij}-\Delta^2\overline{\left| \overline{S} \right|\overline{S}_{ij}}
+		\label{equ: Mij}
+	\end{gather}
+\end{subequations}
+which allows realistic values of $C_D$ for wall bounded flow. 
+
+In the rest of this paper, the superscript $\cdot^R$ is used to describe any fields of the REF-LES. In a similar fashion, the superscripts $\cdot^L$ and $\cdot^S$ are used for L-LES and S-LES fields respectively.
+
+The S-LES solves a modified set of filtered Navier-Stokes equations, which includes the implicit blending between the coarse-grained $\overline{u}_i^{L}$ and the fine-grained $\overline{u}_i^{S}$ velocity field. The mass and momentum conservation equations become
+\begin{subequations}\label{subequ: S-LES fitlered Navier-Stokes}
+	\begin{gather}
+		\frac{\partial \overline{u}_i^S}{\partial x_i} = 0
+		\label{equ - S-LES filtered mass}
+		\\
+		\frac{\partial \overline{u}_i^S}{\partial t}+ \frac{\partial \overline{u}_i^S \overline{u}_j^S}{\partial x_j}=-\frac{\partial \overline{p}^S}{\partial x_i}+\nu \frac{\partial^2 \overline{u}_i^S}{\partial x_{j}x_{j}}-\frac{\partial \tau_{ij}^{S}}{\partial x_j}+\frac{w}{\tau_r} \left( \overline{u}_i^L - \overline{u}_i^S \right)
+		\label{equ - S-LES filtered momentum}
+	\end{gather}
+\end{subequations}
+with $w \in [0,1]$ the blending factor and $\tau_r$ the relaxation time. The fourth rhs term acts as a source term and enforces the blending. It acts by correcting the error  between the calculated field $\overline{u}_i^S$ and the target field  $\overline{u}_i^S$. Higher is the error, stronger is the correction.
+
+\section{Large Eddy Simulation}
+\label{sec: Large Eddy Simulation}
+
+\subsection{Filtering operation}
+\label{subsec: Filtering operation}
+
+\subsubsection{filtering the physical space}
+\label{subsubsec: filtering the physical space}
+
+\subsubsection{filtering the wavenumber space}
+\label{subsubsec: filtering the wavenumber space}
+
+\subsubsection{filter width}
+\label{subsubsec: filter width}
+
+\subsection{Subgrid stress}
+\label{subsec: Subgrid stress}
+
+\section{Turbulence modeling in LES}
+\label{sec: Turbulence modeling in LES}

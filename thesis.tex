@@ -1,0 +1,78 @@
+\documentclass[%
+%    a5paper,
+    a4paper,
+    footinclude=true,
+    headinclude=true
+]{scrbook}
+
+\usepackage{style/preamble}
+\usepackage[backend=bibtex,style=authoryear,sorting=nyt,natbib=true]{biblatex}
+\addbibresource{frontbackmatter/bibliography.bib}
+
+\begin{document}
+
+\selectlanguage{american}
+
+
+%----------------------------------------------------------------------------
+\frontmatter
+
+% Titlepage
+\input{frontbackmatter/titlepage.tex}
+\input{frontbackmatter/titleback.tex}
+\cleardoublepage
+
+% Abstract
+\cleardoublepage
+\input{frontbackmatter/abstract.tex}
+
+% Publications
+%\cleardoublepage
+%\input{frontbackmatter/publications.tex}
+
+% Acknowledgements
+\cleardoublepage
+\input{frontbackmatter/acknowledgements.tex}
+
+% Contents
+\cleardoublepage
+\input{frontbackmatter/contents.tex}
+
+%----------------------------------------------------------------------------
+\mainmatter
+
+% Introduction
+\input{chapters/introduction/introduction.tex}
+
+% Background
+\input{chapters/background/background.tex}
+
+% Background
+\input{chapters/discussion/discussion.tex}
+
+%----------------------------------------------------------------------------
+\backmatter
+
+% Bibliography
+\input{frontbackmatter/bibliography.tex}
+
+% Notation
+\input{frontbackmatter/notation.tex}
+
+% Acronyms
+\input{frontbackmatter/acronyms.tex}
+
+% Index
+%To generate the index: see http://en.wikibooks.org/wiki/LaTeX/Indexing
+\cleardoublepage
+\input{frontbackmatter/index.tex}
+
+% CV
+\input{frontbackmatter/cv.tex}
+
+% Colophon
+\pagebreak
+\input{frontbackmatter/colophon.tex}
+
+
+\end{document}
