@@ -1,0 +1,16 @@
+
+
+# Latex files created bz the compiler
+*.bib
+*.aux
+*.auxlock
+*.aux*
+*.bbl
+*.blg
+*.idx
+*.log
+*.out
+*.pdf
+*.xml
+*.gz
+*.toc
