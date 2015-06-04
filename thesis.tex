@@ -16,8 +16,13 @@
 
 %----------------------------------------------------------------------------
 \frontmatter
+% define the current directory. It can be used for input (not use here),
+% or for importing graphics (see in Discussion.tex)
+\def\dir{frontbackmatter}
 
 % Titlepage
+%\input{\dir/titlepage.tex}
+%\input{\dir/titleback.tex}
 \input{frontbackmatter/titlepage.tex}
 \input{frontbackmatter/titleback.tex}
 \cleardoublepage
@@ -42,16 +47,20 @@
 \mainmatter
 
 % Introduction
+\def\dir{chapters/introduction}
 \input{chapters/introduction/introduction.tex}
 
 % Background
+\def\dir{chapters/background}
 \input{chapters/background/background.tex}
 
-% Background
+% Discussion
+\def\dir{chapters/discussion}
 \input{chapters/discussion/discussion.tex}
 
 %----------------------------------------------------------------------------
 \backmatter
+\def\dir{frontbackmatter}
 
 % Bibliography
 \input{frontbackmatter/bibliography.tex}

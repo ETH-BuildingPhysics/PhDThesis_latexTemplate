@@ -10,7 +10,8 @@
 *.idx
 *.log
 *.out
-*.pdf
 *.xml
 *.gz
 *.toc
+*.ilg
+*.ind

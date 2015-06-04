@@ -66,12 +66,6 @@ marginparwidth=3cm,
 
 % graphics, figures, captions
 \usepackage{graphicx}
-\usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{compat=newest}
-\usetikzlibrary{external}
-\usetikzlibrary{calc}
-\usepackage{style/tkz-gm} % graphical models
 \usepackage{caption}
 \usepackage{subcaption}
 
@@ -80,11 +74,7 @@ marginparwidth=3cm,
 \usepackage{rotating}
 \usepackage{multirow}
 
-\tikzexternalize
-\tikzsetexternalprefix{externalized/}
-
 % hyperref
-%\usepackage{bookmark,hyperref}
 \usepackage{hyperref}
 \hypersetup{%
     %draft,	% = no hyperlinking at all (useful in b/w printouts)
@@ -97,16 +87,17 @@ marginparwidth=3cm,
     urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
     %urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
     pdftitle={\myTitle},%
-    pdfauthor={\myName, \myUni},%
+    pdfauthor={\myName},
     pdfsubject={},%
-    pdfkeywords={},%
+    pdfkeywords={LES;CFD;Wind Tunnel;Boundary layer},%
 }   
 \renewcommand{\subsectionautorefname}{Subsection}
 \renewcommand{\sectionautorefname}{Section}
 \renewcommand{\chapterautorefname}{Chapter}
 \def\algorithmautorefname{Algorithm}
 
-% bibliography
+% bibliography - mvonlanthen: the original option leads to compilation
+% errors...
 %\usepackage{csquotes}
 %\usepackage[%
 %    style=authoryear,%
@@ -125,15 +116,15 @@ marginparwidth=3cm,
 %\bibliography{references}
 
 % theorems, definitions
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem{lemma}{Lemma}[chapter]
-\providecommand*{\lemmaautorefname}{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
-\theoremstyle{remark}
-\newtheorem*{remark}{Remark}
+%\newtheorem{theorem}{Theorem}[chapter]
+%\newtheorem{lemma}{Lemma}[chapter]
+%\providecommand*{\lemmaautorefname}{Lemma}
+%\newtheorem{proposition}[theorem]{Proposition}
+%\theoremstyle{definition}
+%\newtheorem{definition}[theorem]{Definition}
+%\newtheorem{example}[theorem]{Example}
+%\theoremstyle{remark}
+%\newtheorem*{remark}{Remark}
 
 % acronyms
 \PassOptionsToPackage{printonlyused,smaller}{acronym}
