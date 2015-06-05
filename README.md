@@ -11,6 +11,8 @@ bibliography was also broken (on our computer at least). It is fixed now.
 ## Installation
 Try it and tell us what is needed. We will update this section accordingly.
 
+## Known issues
+
 
 ##Authors:
 * Marcel Vonlanthen (modification of the orginial template and pre-alpha tester)

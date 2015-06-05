@@ -23,3 +23,40 @@ Direct Numerical Simulation \index{Direct Numerical Simulation} (DNS) resolves a
 \end{enumerate}
 Most of the latex editor have a buttom/shortcut for makeIndex. See \url{http://en.wikibooks.org/wiki/LaTeX/Indexing} for more information in indexing.
 
+\section{How to make tables}
+\label{sec:How to make tables}
+A example of a floating table with caption and label (see tab.\ref{tab:lpqp:grid}).
+
+\begin{table}[htb]
+	\centering
+	\begin{tabular}{l cc cc cc}
+		\hline
+		$M$ (size)  &  \multicolumn{2}{c}{60} &  \multicolumn{2}{c}{90} &  \multicolumn{2}{c}{120} \\
+		$K$ (\# states)  &  2  &  5  &  2  & 5  &  2  & 5 \\
+		\hline\hline
+		& \multicolumn{6}{c}{$\sigma=0.05$} \\
+		\cline{2-7}
+		MPLP   &    0.71  &    0.99   &   0.51  &    0.96   &   0  &    0.95 \\
+		LPQP-U   &    0.97  &    0.99   &   0.97  &    1   & 0.98  &    1 \\
+		LPQP-T   &    1  &    0.97   &   1  &    0.98   & 1  &    0.98 \\
+		TRWS   &    0  &    0   &   0  &    0   &   0.39  &    0\\
+		\cline{2-7}
+		& \multicolumn{6}{c}{$\sigma=0.5$}  \\
+		\cline{2-7}
+		MPLP   &    1  &    1   &   1  &    1   & 1  &    0.99\\
+		LPQP-U   &    0.99  &    0.92   &   0.99  &    0.91   &   1  &    0.94\\
+		LPQP-T   &    0.99  &    0.95   &   0.99  &    0.94   &   0.99  &    0.96\\
+		TRWS   &    0  &    0   &   0  &    0   &   0  &    0\\
+		\hline
+	\end{tabular}	
+	\caption[]{Averaged scores achieved by the MPE solvers on the synthetic grid data. 
+		The scores}
+	\label{tab:lpqp:grid}
+\end{table}
+
+\section{Add acronyms}
+\label{sec:Add acronyms}
+To use linked acronyms, first fill acronyms.tex with your entries. The first time an acronym is used with the command ac\{\}, The full name and the acronym in brackets is displayed. At the second use and after, only the acronym without bracket is shown. If you want to display the full name again, use the command acf\{\}.Example:
+ 
+Three major numerical models exist in \ac{CFD}. The first one, which resolved all the turbulent scales, is known as \ac{DNS}\index{Direct Numerical Simulation}. The second one, which resolved only the large scales, is named \ac{LES}. The third one, which is purely a statistical model, is the \ac{RANS}\index{Reynolds Average Navier Stokes} approach. Nowadays, \ac{DNS} is unfeasible for the majority of problems, therefore \ac{RANS} models are used. Despite been computational intensive, \ac{LES} offers much higher quality results than \acf{RANS} for only a fraction of the computational cost of a \ac{DNS}.
+
