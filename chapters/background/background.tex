@@ -2,8 +2,8 @@
 \label{sec: Background}
 
 
-\section{The Navier-Stokes equations}
-\label{sec: The Navier-Stokes equations}
+\section{a long text with equation}
+\label{sec: a long text with equation}
 
 The microclimate over urban areas involves a wide range of flow scales. On the one hand, obstacles such as buildings, civil engineering structures or small  terrain features, affect the atmospheric boundary layer. The topology of such obstacles results into small flow structures with a typical size of $\mathcal{O}=10^{0}m$. On the other hand, large scale effects, such as regional winds and convective cells, generate large scale eddies with a size of $\mathcal{O}=10^{2}m$. Resolving this wide range of scales in a single fine-grained Large Eddy Simulation (LES) model would still be unfeasible due to its computational cost in terms of cell count and time stepping. Even the use of local mesh refinement to tackle the cell count problem would still require a very small time step to keep the Courant number below unity. Therefore, a nesting procedure is proposed to solve the both issues. An LES-within-LES nesting is composed of a Small-domain fine-grained LES (referred as S-LES from now), which is embedded in a Large-domain coarse-grained LES (referred as L-LES). The fields of the L-LES are interpolated on the boundaries of the S-LES to achieve the nesting. A blending zone, also named relaxation zone, is sometime added in the S-LES domain to ensure a smooth transition between the flow fields of the two simulations.
 
