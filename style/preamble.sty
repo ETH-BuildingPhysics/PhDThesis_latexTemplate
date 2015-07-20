@@ -11,6 +11,7 @@
 
 % character encoding and languages
 \usepackage[american, ngerman]{babel}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 %\input glyphtounicode
 %\pdfgentounicode=1
@@ -96,24 +97,19 @@ marginparwidth=3cm,
 \renewcommand{\chapterautorefname}{Chapter}
 \def\algorithmautorefname{Algorithm}
 
-% bibliography - mvonlanthen: the original option leads to compilation
-% errors...
-%\usepackage{csquotes}
-%\usepackage[%
-%    style=authoryear,%
-%    dashed=false,%
-%    doi=false,%
-%    isbn=false,%
-%    hyperref=auto,%
-%    backref,%
-%    backrefstyle=three,%
-%    maxbibnames=99,%
-%    maxcitenames=3,
-%]{biblatex}
-%%\renewbibmacro{in:}{%
-%%  \ifentrytype{article}{}{%
-%%  \printtext{\bibstring{in}\intitlepunct}}}
-%\bibliography{references}
+% bibliography
+%If you are compiling your thesis on linux (or OSX), use the backend biber
+\usepackage[backend=bibtex,
+%\usepackage[backend=biber,
+dashed=false,
+%doi=false,
+%isbn=false,
+%url=false,
+style=authoryear,
+sorting=nyt,
+natbib=false,
+maxcitenames=2]{biblatex}
+\addbibresource{frontbackmatter/bibliography.bib}
 
 % theorems, definitions
 %\newtheorem{theorem}{Theorem}[chapter]

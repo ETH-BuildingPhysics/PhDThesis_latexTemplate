@@ -6,8 +6,6 @@
 ]{scrbook}
 
 \usepackage{style/preamble}
-\usepackage[backend=bibtex,style=authoryear,sorting=nyt,natbib=true]{biblatex}
-\addbibresource{frontbackmatter/bibliography.bib}
 
 \begin{document}
 
@@ -26,6 +24,10 @@
 \input{frontbackmatter/titlepage.tex}
 \input{frontbackmatter/titleback.tex}
 \cleardoublepage
+
+% The cool front citation
+\cleardoublepage
+\input{frontbackmatter/frontquote.tex}
 
 % Abstract
 \cleardoublepage

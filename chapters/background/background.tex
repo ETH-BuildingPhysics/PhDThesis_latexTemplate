@@ -9,7 +9,7 @@ The microclimate over urban areas involves a wide range of flow scales. On the o
 
 Reynolds Averaged Navier-Stokes (RANS) nesting procedures are already common practice for operational Numerical Weather Prediction (NWP). For example, most of the European meteorological offices use the a global planetary model to get macroscale climate prediction and transfer the relevant data to a nested NWP model for the mesoscale weather prediction.
 
-The reference LES and coarse LES solve the standard filtered Navier-stokes equation for mass and momentum (\cite{Smagorinsky1963}), which can be written in conservative form as:
+The reference LES and coarse LES solve the standard filtered Navier-stokes equation for mass and momentum (\textcite{Smagorinsky1963}), which can be written in conservative form as:
 \begin{subequations}\label{subequ: fitlered Navier-Stokes}
 	\begin{gather}
 		\frac{\partial \overline{u}_i}{\partial x_i} = 0
@@ -45,7 +45,7 @@ The residual stress tensor $\tau_{ij}^{sgs}$, also know as the sub-grid stress (
 \begin{equation}
 \tau_{ij}^{sgs}=\overline{u_i u_j}-\overline{u}_i\overline{u}_j.
 \end{equation}
-In this study the dynamic Smagorinsky-Lilly model proposed by \cite{Lilly1992} is used to modeled the sgs stress tensor. It is approximated by
+In this study the dynamic Smagorinsky-Lilly model proposed by \textcite{Lilly1992} is used to modeled the sgs stress tensor. It is approximated by
 \begin{equation}\label{equ: sgs model}
 \tau_{ij}=\frac{1}{3}\delta_{ij}\tau_{kk}+2(C_{D}\Delta)^2\left| \overline{S} \right|\overline{S}_{ij}
 \end{equation}
